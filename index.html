@@ -3,16 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Portal</title>
+  <title>Login</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <!-- Login Box -->
     <div class="login-box">
       <div class="header">
-        <h1>🔒 Access Vault</h1>
-        <p>Your gateway to CBDWAP</p>
+        <h1>🔒 Secure Login</h1>
+        <p>Access the Vault</p>
       </div>
       <form id="loginForm" class="form">
         <div class="input-container">
@@ -23,26 +22,31 @@
           <input type="password" id="password" name="password" required>
           <label for="password">Password</label>
         </div>
-        <button type="submit" class="submit-btn">Unlock</button>
+        <button type="submit" class="submit-btn">Login</button>
         <p id="error" class="error-message"></p>
       </form>
     </div>
-
-    <!-- Success Page -->
-    <div id="successPage" class="hidden success-message">
-      <h1>Welcome to the Vault 💎</h1>
-      <p>vault: 1 ETH</p>
-
-      <!-- Ethereum Info Section -->
-      <div id="ethInfo" class="eth-info">
-        <h2>Ethereum Dashboard</h2>
-        <p id="ethPrice">Fetching ETH price...</p>
-        <button class="action-btn" onclick="buyETH()">Buy ETH</button>
-        <button class="action-btn" onclick="sellETH()">Sell ETH</button>
-      </div>
-    </div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const error = document.getElementById("error");
+
+      // Dummy credentials
+      const validUsername = "vaultkeeper";
+      const validPassword = "open123";
+
+      if (username === validUsername && password === validPassword) {
+        // Redirect to Page 2
+        window.location.href = "page2.html";
+      } else {
+        error.textContent = "Invalid username or password. Please try again.";
+      }
+    });
+  </script>
 </body>
 </html>
