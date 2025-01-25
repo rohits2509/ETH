@@ -139,6 +139,36 @@ input:not(:placeholder-shown) + label {
   transition: 0.3s ease;
 }
 
+
+.transactions {
+  margin-top: 30px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.transactions h2 {
+  color: #6a11cb;
+  margin-bottom: 15px;
+}
+
+.transactions ul {
+  list-style: none;
+  padding: 0;
+}
+
+.transactions li {
+  background: rgba(255, 255, 255, 0.2);
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  color: #fff;
+}
+
 .action-btn:hover {
   background-color: #2575fc;
   transform: scale(1.05);
