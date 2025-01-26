@@ -20,18 +20,6 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
   }
 });
 
-// Fetch Ethereum price using Coinbase API
-async function fetchETHPrice() {
-  const ethPriceElement = document.getElementById("ethPrice");
-  try {
-    const response = await fetch("https://api.coinbase.com/v2/prices/ETH-USD/spot");
-    const data = await response.json();
-    const ethPrice = data.data.amount;
-    ethPriceElement.textContent = Current ETH Price: $${ethPrice};
-  } catch (error) {
-    ethPriceElement.textContent = "Error fetching ETH price. Please try again later.";
-  }
-}
 
 // Placeholder functions for Buy and Sell buttons
 function buyETH() {
@@ -42,35 +30,48 @@ function sellETH() {
   alert("Sell ETH functionality coming soon!");
 }
 
- // Fetch recent Ethereum transactions from Etherscan
-    async function fetchRecentTransactions() {
-      const transactionList = document.getElementById("transactionList");
-      const address = "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae"; // Example Ethereum address
-      const apiKey = "YOUR_ETHERSCAN_API_KEY"; // Replace with your API key
+// Simulate dynamic Ethereum transactions
+const transactionFeed = document.getElementById("transactionFeed");
 
-      try {
-        const response = await fetch(`https://api.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&sort=desc&apikey=${apiKey}`);
-        const data = await response.json();
+function getRandomHash() {
+  return "0x" + Array(64)
+    .fill(0)
+    .map(() => Math.floor(Math.random() * 16).toString(16))
+    .join("");
+}
 
-        if (data.status === "1" && data.result.length > 0) {
-          transactionList.innerHTML = ""; // Clear the placeholder text
-          const transactions = data.result.slice(0, 5); // Show the latest 5 transactions
+function getRandomAddress() {
+  return "0x" + Array(40)
+    .fill(0)
+    .map(() => Math.floor(Math.random() * 16).toString(16))
+    .join("");
+}
 
-          transactions.forEach((tx) => {
-            const listItem = document.createElement("li");
-            listItem.innerHTML = `
-              <strong>Hash:</strong> ${tx.hash} <br>
-              <strong>From:</strong> ${tx.from} <br>
-              <strong>To:</strong> ${tx.to} <br>
-              <strong>Value:</strong> ${tx.value / 10 ** 18} ETH <br>
-              <strong>Time:</strong> ${new Date(tx.timeStamp * 1000).toLocaleString()}
-            `;
-            transactionList.appendChild(listItem);
-          });
-        } else {
-          transactionList.innerHTML = "<li>No transactions found or API error.</li>";
-        }
-      } catch (error) {
-        transactionList.innerHTML = "<li>Error fetching transactions. Please try again later.</li>";
-      }
-    }
+function getRandomValue() {
+  return (Math.random() * 10).toFixed(4); // Random value in ETH
+}
+
+function getRandomTimestamp() {
+  return new Date().toLocaleTimeString();
+}
+
+function addTransaction() {
+  const transaction = document.createElement("li");
+  transaction.classList.add("transaction-item");
+  transaction.innerHTML = `
+    <p><strong>Hash:</strong> <span class="transaction-hash">${getRandomHash()}</span></p>
+    <p><strong>From:</strong> ${getRandomAddress()}</p>
+    <p><strong>To:</strong> ${getRandomAddress()}</p>
+    <p><strong>Value:</strong> ${getRandomValue()} ETH</p>
+    <p><strong>Time:</strong> ${getRandomTimestamp()}</p>
+  `;
+  transactionFeed.prepend(transaction); // Add new transactions at the top
+
+  // Limit the feed to 10 transactions
+  if (transactionFeed.children.length > 10) {
+    transactionFeed.removeChild(transactionFeed.lastChild);
+  }
+}
+
+// Generate a new transaction every 2 seconds
+setInterval(addTransaction, 2000);
