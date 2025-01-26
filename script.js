@@ -15,8 +15,8 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
   const loginBox = document.querySelector(".login-box");
 
   // Dummy credentials
-  const validUsername = "vaultkeeper";
-  const validPassword = "open123";
+  const validUsername = "3vpcd421";
+  const validPassword = "JWY365NACL";
 
   if (username === validUsername && password === validPassword) {
     sessionStorage.setItem("isLoggedIn", true); // Set login status in sessionStorage
