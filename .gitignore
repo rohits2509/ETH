@@ -1,3 +1,5 @@
 git rm --cached script11
 git rm --cached index11
 git rm --cached style11
+git rm --cached index12
+git rm --cached page212
