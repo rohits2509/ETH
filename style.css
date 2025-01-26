@@ -219,7 +219,7 @@ body {
   color: #6a11cb;
 }
 
-/* Responsive Design */
+/* Responsive Design 
 @media (max-width: 768px) {
   .login-box, .vault-box, .transactions-section {
     width: 90%;
