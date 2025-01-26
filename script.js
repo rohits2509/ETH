@@ -1,10 +1,10 @@
-document.addEventListener("DOMContentLoaded", function () {
+//document.addEventListener("DOMContentLoaded", function () {
   // Check login status on page load
-  if (!localStorage.getItem("isLoggedIn")) {
+ // if (!localStorage.getItem("isLoggedIn")) {
     // Redirect to login page if not logged in
-    window.location.href = "index.html";
-  }
-});
+ //   window.location.href = "index.html";
+ // }
+//});
 
 document.getElementById("loginForm").addEventListener("submit", function (e) {
   e.preventDefault();
