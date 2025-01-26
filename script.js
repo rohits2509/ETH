@@ -1,10 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // Check login status on page load
-  if (!sessionStorage.getItem("isLoggedIn")) {
-    // Redirect to login page if not logged in
-    window.location.href = "index.html";
-  }
-});
+
 
 document.getElementById("loginForm").addEventListener("submit", function (e) {
   e.preventDefault();
