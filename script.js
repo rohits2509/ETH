@@ -1,11 +1,3 @@
-//document.addEventListener("DOMContentLoaded", function () {
-  // Check login status on page load
- // if (!localStorage.getItem("isLoggedIn")) {
-    // Redirect to login page if not logged in
- //   window.location.href = "index.html";
- // }
-//});
-
 document.getElementById("loginForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -20,24 +12,10 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
   const validPassword = "open123";
 
   if (username === validUsername && password === validPassword) {
-    localStorage.setItem("isLoggedIn", true); // Set login status in localStorage
     loginBox.classList.add("hidden");
     successPage.classList.remove("hidden");
+    fetchETHPrice(); // Fetch ETH price upon successful login
   } else {
     error.textContent = "Oops! Incorrect credentials. Try again.";
   }
 });
-
-// Placeholder functions for Buy and Sell buttons
-function buyETH() {
-  alert("Buy ETH functionality coming soon!");
-}
-
-function sellETH() {
-  alert("Sell ETH functionality coming soon!");
-}
-
-// Logout functionality if page is refreshed
-//window.addEventListener("beforeunload", function () {
- // localStorage.removeItem("isLoggedIn"); // Clear login status
-//});
