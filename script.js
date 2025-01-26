@@ -38,6 +38,6 @@ function sellETH() {
 }
 
 // Logout functionality if page is refreshed
-window.addEventListener("beforeunload", function () {
-  localStorage.removeItem("isLoggedIn"); // Clear login status
-});
+//window.addEventListener("beforeunload", function () {
+ // localStorage.removeItem("isLoggedIn"); // Clear login status
+//});
